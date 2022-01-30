@@ -152,8 +152,7 @@ threadpoolctl==3.0.0
 tika==1.24
 tokenizers==0.10.3
 toml==0.10.2
-torch==1.8.1+cpu
-torchvision==0.9.1+cpu
+torch==1.8.2+cpu torchvision==0.9.2+cpu -f https://download.pytorch.org/whl/lts/1.8/torch_lts.html
 tox==3.24.4
 tqdm==4.62.3
 transformers==4.6.1
