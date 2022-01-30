@@ -144,7 +144,7 @@ sklearn==0.0
 smmap==5.0.0
 sniffio==1.2.0
 SPARQLWrapper==1.8.5
-SQLAlchemy==1.4.0
+SQLAlchemy==1.4.2
 SQLAlchemy-Utils==0.38.2
 sqlparse==0.4.2
 starlette==0.17.1
