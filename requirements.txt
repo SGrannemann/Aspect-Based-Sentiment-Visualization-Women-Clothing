@@ -11,7 +11,6 @@ astroid==2.9.3
 async-timeout==4.0.2
 attrs==21.4.0
 azure-core==1.21.1
-azure-storage-blob==12.9.0
 blessings==1.7
 blinker==1.4
 boto3==1.20.37
@@ -25,7 +24,6 @@ cloudpickle==2.0.0
 colorama==0.4.4
 coverage==6.2
 cryptography==36.0.1
-databricks-cli==0.16.2
 decorator==5.1.1
 Deprecated==1.2.13
 dill==0.3.4

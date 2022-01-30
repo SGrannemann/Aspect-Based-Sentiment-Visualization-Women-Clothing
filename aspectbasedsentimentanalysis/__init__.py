@@ -2,7 +2,6 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 import os
 from flask_migrate import Migrate
-from haystack.document_store.sql import SQLDocumentStore
 from haystack.document_store.memory import InMemoryDocumentStore
 from haystack.retriever.sparse import TfidfRetriever
 from haystack.reader.farm import FARMReader
