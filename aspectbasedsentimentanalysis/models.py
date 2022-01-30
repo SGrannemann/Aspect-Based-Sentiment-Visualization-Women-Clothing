@@ -13,7 +13,7 @@ class UserQuery(db.Model):
     __table__ = db.Model.metadata.tables['user_query']
 
     def __init__(self, userquery):
-        self.userquery = userquery
+        self.user_query = userquery
 
 
 
