@@ -25,7 +25,7 @@ db = SQLAlchemy(app)
 db.Model.metadata.reflect(db.engine)
 Migrate(app, db)
 """HuggingFace/Haystack setup"""
-MODEL = 'mrm8488/bert-small-finetuned-squadv2'
+MODEL = 'mrm8488/bert-tiny-5-finetuned-squadv2'
 
 # DocStore Setup
 document_store = InMemoryDocumentStore()
