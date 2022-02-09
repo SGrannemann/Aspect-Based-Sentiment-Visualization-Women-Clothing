@@ -34,7 +34,6 @@ entrypoints==0.3
 faiss-cpu==1.7.2
 farm==0.8.0
 farm-haystack==0.10.0
-fastapi==0.71.0
 filelock==3.4.2
 Flask==1.0.2
 Flask-Cors==3.0.10
@@ -46,9 +45,6 @@ Flask-WTF==0.14.2
 frozenlist==1.2.0
 gitdb==4.0.9
 GitPython==3.1.26
-google-api-core==2.4.0
-google-auth==2.3.3
-googleapis-common-protos==1.54.0
 gpustat==0.6.0
 greenlet==1.1.2
 grpcio==1.37.1
@@ -84,8 +80,6 @@ multidict==5.2.0
 networkx==2.6.3
 numpy==1.22.1
 nvidia-ml-py3==7.352.0
-oauth2==1.9.0.post1
-oauthlib==3.1.1
 opencensus==0.8.0
 opencensus-context==0.1.2
 packaging==21.3
