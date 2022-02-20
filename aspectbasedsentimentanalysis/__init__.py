@@ -6,24 +6,29 @@ from haystack.document_store.memory import InMemoryDocumentStore
 from haystack.retriever.sparse import TfidfRetriever
 from haystack.reader.farm import FARMReader
 from haystack.pipeline import ExtractiveQAPipeline
+from flask_restful import Resource, Api
 
 
 
 
 app = Flask(__name__)
 # TODO: Change to environment variable before launching
-app.config['SECRET_KEY'] = 'mysecretkey'
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 
 """Database setup"""
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 # TODO: Change to environment variable before launching
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///" + os.path.join(basedir, 'reviews.sqlite')
+#app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///" + os.path.join(basedir, 'reviews.sqlite')
+app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("SQLALCHEMY_DATABASE_URI")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 db.Model.metadata.reflect(db.engine)
 Migrate(app, db)
+
+api = Api(app)
+
 """HuggingFace/Haystack setup"""
 MODEL = 'mrm8488/bert-tiny-5-finetuned-squadv2'
 
@@ -47,19 +52,13 @@ app.register_blueprint(bp)
 
 
 
-@app.route('/test')
-def test():
-    return ' '.join([doc.text for doc in document_store.get_all_documents()])
+
+"""REST API for the user queries"""
+from aspectbasedsentimentanalysis.models import UserQuery
+class UserQueries(Resource):
+    def get(self):
+        queries = UserQuery.query.all()
+        return [query.json() for query in queries]
 
 
-   
-
-
-
-
-
-
-"""REST API for the haystack pipeline"""
-# TODO: build REST API endpoint with GET for inference results
-
-
+api.add_resource(UserQueries, '/queries')

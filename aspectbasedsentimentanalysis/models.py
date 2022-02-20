@@ -15,6 +15,9 @@ class UserQuery(db.Model):
     def __init__(self, userquery):
         self.user_query = userquery
 
+    def json(self):
+        return {'query': self.user_query}    
+
 
 
 
