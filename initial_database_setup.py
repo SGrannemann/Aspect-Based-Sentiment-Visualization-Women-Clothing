@@ -1,31 +1,17 @@
+
+"""
+Script used to setup the initial database from the CSV files. This is necessary because pandas itself does not provide a means to set a primary key.
+So we set up the database "manually" and then append the data with pandas.
+"""
 import pandas as pd
 import sqlite3
 
 
 
 
-
-
-
-# def setup_db_with_key(cursor):
-    
-#     cursor.execute("""CREATE TABLE reviews ("index" INTEGER PRIMARY KEY NOT NULL,
-#                 "Clothing_ID" INTEGER,
-#                 "Age" INTEGER,
-#                 "Title" TEXT,
-#                 "Review_Text" TEXT,
-#                 "Rating" INTEGER,
-#                 "Recommended_IND" INTEGER ,
-#                 "Positive_Feedback_Count" INTEGER,
-#                 "Division_Name" TEXT,
-#                 "Department_Name" TEXT,
-#                 "Class_Name" TEXT
-#                 );
-#                 """)
-#     cursor.execute("""CREATE TABLE user_query ("index" INTEGER PRIMARY KEY NOT NULL, "user_query" TEXT) """)
-
 def setup_db_with_key(cursor):
-    
+    """Method that creates the tables using the sqlite3 cursor.
+    """
     cursor.execute("""CREATE TABLE reviews ("index" INTEGER PRIMARY KEY NOT NULL,
                 "Review_Text" TEXT
                 );

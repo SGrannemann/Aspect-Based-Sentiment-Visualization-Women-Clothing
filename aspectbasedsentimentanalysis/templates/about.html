@@ -1,10 +1,54 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="jumbotron">
-    <h1>Info about this project</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quo repellat iusto, enim excepturi in
-        dignissimos officiis odit expedita itaque. Voluptatem nam voluptas, blanditiis vitae illum illo perspiciatis quo
-        cum!</p>
+<div class="jumbotron jumbotron-fluid bg-dark text-white-50 mb-4">
+    <div class="container">
+    <h1 class="display-4 text-white mb-2">About this project</h1>
+    <p class="lead text-white-50 mb-4">On this page, you can find information on the following aspects of this project:</p>
+    <ul class="lead text-white-50 mb-4">
+        <li>
+            <a href="#use_case">Initial thinking and Use Case</a>
+    </li>
+    <li><a href="#tech_stack">The used tech stack</a></li>
+    <li><a href="#approach">The proect approach including problems that came up.</a></li>
+</ul>
+    <h2 id="use_case" class="text-white mb-2">Initial thinking and Use Case</h2>
+    <p>The idea for this project came up when I first came in contact with the HayStack library by deepset.ai. This was during the M3 - Minds Mastering Machines - organized by Heise in the fall
+        of 2021. There were a few presentations on that day that used the HayStack library - one of the talks used it for Aspect-Based Sentiment Analysis, i.e., analyzing the sentiment of texts 
+        with regards to certain aspects of products. </p>
 
+        <p>I considered this to be an interesting use case and wanted to combine that with a WebApp to allow others to use the QA-System with the added visualization. This means that anyone can ask
+            questions and the answers will be visualized as a word cloud. The asked questions are logged in a database so I can potentially do some exploratory data analysis on them.</p>
+
+        <p>The underlying dataset I used is from Kaggle. The data is about reviews for women's clothing. The dataset can be found <a href="https://www.kaggle.com/nicapotato/womens-ecommerce-clothing-reviews">here</a>.
+        <p>This of course means that the visualization will only make sense if there are actual answers to your question in that dataset.</p>        
+        
+        <p>The main goal of this project was to allow me to learn. If you have ideas for improvement or find bugs, feel free to contact me on the GitHub repo for this <a href="https://github.com/SGrannemann/Aspect-Based-Sentiment-Visualization-Women-Clothing">project</a>.</p>
+        
+    
+    <h2 id="tech_stack" class="text-white mb-2">Used Technology</h2>
+    <p></p>This project is mainly based on the <strong>HayStack</strong> library for the question answering part. Haystack itself is based on the transformers library HuggingFace. It provides quite nice and simple
+    components to build complete Retriever-Reader pipelines. For more information, refer to their <a href="https://haystack.deepset.ai/overview/intro">documentation</a>.</p>
+    <p>The WebApp was built using <strong>Flask</strong>. It is quite basic and barebones, but it gets the job done. The WebApps backend (mainly the dataset) uses SQLite. I decided to use <strong>Flask-SQLAlchemy</strong> 
+        for ORM capabilities, which makes both accessing the reviews as well as persisting user queries very easy. To be able to access the user queries easily the database provides a REST API 
+        (only GET method so far) that I built using <strong>Flask-Restful</strong>.
+    </p>
+    <p>The WebApp runs on an Ubuntu VPS using Nginx and gunicorn.  Pretty standard, but setting up the server and getting the app to run was a good learning experience that included a lot of Googling ;)</p>
+
+    
+    <h2 id="approach" class="text-white mb-2">Project Approach</h2>
+    <p>Based on my main goal of learning, I decided to keep the question answering part of the app quite basic as I wanted to focus more on the WebApp part. Thus, it uses a small QA Transformer model out-of-the-box without finetuning.
+         Getting the different libraries and their dependencies to work together took some time to figure out as there were version conflicts. After some tinkering I made it work and sure hope that my requirements file will never ever disappear :). </p>
+        <p>I decided to use a SQL backend even though the dataset as a CSV file would probably suffice as I wanted to practice using ORMs etc. Initially, I bulk loaded the data from the CSV 
+            into the SQL database with a script. I planned to simply use pandas to_sql method for that, but this did not work as expected as for ORM capabilities pimary keys are required.
+            Thus, the script sets up the database including its schema first and then adds the data from the CSV file via pandas. </p>
+            <p>After the initial setup, all database interaction is done through the Flask-SQLAlchemy ORM wrapper.</p> 
+            <p>Initially, I planned to run the WebApp on Heroku to avoid all hassle regarding deployment, but the combination of the used libraries and models did not work because the slug size was too large. That is when I decided to rent a (cheap) VPS and set up the App
+                myself. That was not as easy as I hoped because I was seriously lacking in Technology background regarding Nginx and gunicorn but I googled my way through it and it was a good experience.
+            </p>
+            <p>On the Flask side, I went with the best practice of separating views, models and forms even though the actual code for the app were only a few dozen lines, but I expect to use this app as 
+                a template later on. </p>
+                <p> This is it for now, feel free to checkout the source code <a href="https://github.com/SGrannemann/Aspect-Based-Sentiment-Visualization-Women-Clothing">here</a>.</p>
+
+            </div>
 </div>
 {% endblock %}

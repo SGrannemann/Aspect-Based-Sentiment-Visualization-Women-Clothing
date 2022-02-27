@@ -1,14 +1,23 @@
 {% extends "base.html" %}
 {% block content %}
+<header class="bg-dark py-5">
+    <div class="container px-5">
+        <div class="row gx-5 justify-content-center">
+            <div class="col-lg-6">
+                <div class="text-center my-5">
+                    <h1 class="display-5 fw-bolder text-white mb-2">Women's Clothing - Aspect Based Sentiment Analysis</h1>
+                    <p class="lead text-white-50 mb-4">Welcome to this question-answering NLP project.</p>
+                    <p class="lead text-white-50 mb-4">With this little project, you can ask a question. The deployed Question-Answering System will then lookup the most fitting answers to your questions from the available reviews of women's clothing and will visualize the answer. For more information, checkout the About page. Have fun!</p>
+                    <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+                        <a class="btn btn-primary btn-lg px-4 me-sm-3" href="{{url_for('bp.question')}}">Ask a Question</a>
+                        <a class="btn btn-outline-light btn-lg px-4" href="{{url_for('bp.about')}}">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
 
-<div class="jumbotron">
-    <h1>Women's Clothing - Aspect Based Sentiment Analysis</h1>
-</div>
-
-<div class="container">
-    <h1>Welcome to this question-answering NLP project. </h1>
-    <p>With this little project, you can ask a question. The deployed Question-Answering System will then lookup the most fitting answers to your questions from the available reviews of women's clothing and will visualize the answer. For more information, checkout the About page. Have fun!</p>
-</div>
 
 
 {% endblock %}
